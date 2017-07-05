@@ -7,7 +7,7 @@ import re
 
 CONFIG_FILE = '/etc/wifi.conf'
 
-IFACE = 'wlan0'
+IFACE = 'wlp7s0'
 
 def log(message):
     if '-v' in sys.argv:
@@ -82,7 +82,7 @@ def is_network_saved(network, saved_networks):
 def choose_network(networks, saved_networks):
     for i, network in enumerate(networks):
         saved = is_network_saved(network, saved_networks)
-        print('[' + str(i) + '] - ' + network['ssid'] + ' (' + network['mac'] + ')' + (' (open)' if network['open'] else '') + (' saved)' if saved else ''))
+        print('[' + str(i) + '] - ' + network['ssid'] + ' (' + network['mac'] + ')' + (' (open)' if network['open'] else '') + (' (saved)' if saved else ''))
     choice = int(input('Choose network to connect: '))
     return networks[choice]
 
